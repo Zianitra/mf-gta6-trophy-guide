@@ -3,23 +3,100 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>VICE GUIDE — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="Offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: platinum roadmap, missable flags, filters, spoiler mode and a checklist saved in your browser.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<div class="noise" aria-hidden="true"></div>
+
+<header class="masthead">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-trophy"></use></svg>
+    <div class="brand-text">
+      <h1>VICE&nbsp;GUIDE</h1>
+      <p class="sub">Grand Theft Auto VI · PlayStation 5 · Trophy Guide &amp; Tracker</p>
+    </div>
+  </div>
+  <div class="mast-actions">
+    <button id="spoiler" class="btn btn-ghost" type="button" aria-pressed="false">Spoiler mode: <span>OFF</span></button>
+    <button id="export" class="btn" type="button">Export</button>
+    <label class="btn btn-file">Import<input id="import" type="file" accept="application/json"></label>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<section class="stats">
+  <div class="stat-ring" id="stat-ring" style="--pct:0"><b>0%</b></div>
+  <div class="stat-body">
+    <div class="stat-line"><strong id="earned">0</strong> of <strong id="total">55</strong> earned</div>
+    <div class="stat-break" id="stat-break"></div>
+    <div class="bar"><div class="bar-fill" id="bar-fill"></div></div>
+  </div>
+</section>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-view="tracker" role="tab" type="button">Tracker</button>
+  <button class="tab" data-view="roadmap" role="tab" type="button">Roadmap</button>
+</nav>
+
+<main>
+  <section id="view-tracker" class="view active">
+    <div class="controls">
+      <div class="chips" id="chips">
+        <button class="chip active" data-kind="all" type="button">All <em id="c-all">55</em></button>
+        <button class="chip" data-kind="story" type="button">Story <em id="c-story">0</em></button>
+        <button class="chip" data-kind="missable" type="button">Missable <em id="c-missable">0</em></button>
+        <button class="chip" data-kind="collectibles" type="button">Collectibles <em id="c-collectibles">0</em></button>
+        <button class="chip" data-kind="activities" type="button">Activities <em id="c-activities">0</em></button>
+      </div>
+      <div class="controls-right">
+        <label class="grade-select">Grade
+          <select id="grade">
+            <option value="all">All</option>
+            <option value="platinum">Platinum</option>
+            <option value="gold">Gold</option>
+            <option value="silver">Silver</option>
+            <option value="bronze">Bronze</option>
+          </select>
+        </label>
+        <input id="search" class="search" type="search" placeholder="Search trophies…" autocomplete="off">
+      </div>
+    </div>
+    <p class="hint" id="tracker-hint"></p>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="view-roadmap" class="view">
+    <div class="roadmap-head">
+      <h2>Platinum roadmap</h2>
+      <p class="hint">One playthrough, no difficulty settings, no online trophies — roughly 200 hours. Follow the phases in order; nothing below is missable except the Chapter 1 meditation in Phase 1.</p>
+    </div>
+    <ol class="phases" id="phases"></ol>
+  </section>
+</main>
+
+<dialog id="detail" class="detail">
+  <div class="detail-inner" id="detail-inner"></div>
+</dialog>
+
+<svg class="defs" aria-hidden="true">
+  <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+    <path d="M4 22h16"/>
+    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 6 9 17l-5-5"/>
+  </symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2"/>
+    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+  </symbol>
+</svg>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>

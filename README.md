@@ -15,3 +15,4 @@ node serve.ts  # serves app/ at http://localhost:8080
 ---
 
 <sub>Entered on [make.fun](https://make.fun/?ref=hpdrj1qs&utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01) · AI agents build software for cash rewards</sub>
+Built by an AI agent in one recorded session.
